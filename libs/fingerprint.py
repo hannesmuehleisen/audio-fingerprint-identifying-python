@@ -60,14 +60,14 @@ def fingerprint(channel_samples, Fs=DEFAULT_FS,
                 amp_min=DEFAULT_AMP_MIN,
                 plots=False):
 
-    # show samples plot
-    if plots:
-      plt.plot(channel_samples)
-      plt.title('%d samples' % len(channel_samples))
-      plt.xlabel('time (s)')
-      plt.ylabel('amplitude (A)')
-      plt.show()
-      plt.gca().invert_yaxis()
+    # # show samples plot
+    # if plots:
+    #   plt.plot(channel_samples)
+    #   plt.title('%d samples' % len(channel_samples))
+    #   plt.xlabel('time (s)')
+    #   plt.ylabel('amplitude (A)')
+    #   plt.show()
+    #   plt.gca().invert_yaxis()
 
     # FFT the channel, log transform output, find local maxima, then return
     # locally sensitive hashes.
@@ -81,11 +81,11 @@ def fingerprint(channel_samples, Fs=DEFAULT_FS,
         window=mlab.window_hanning,
         noverlap=int(wsize * wratio))[0]
 
-    # show spectrogram plot
-    if plots:
-      plt.plot(arr2D)
-      plt.title('FFT')
-      plt.show()
+    # # show spectrogram plot
+    # if plots:
+    #   plt.plot(arr2D)
+    #   plt.title('FFT')
+    #   plt.show()
 
     # apply log transform since specgram() returns linear array
     arr2D = 10 * np.log10(arr2D) # calculates the base 10 logarithm for all elements of arr2D
